@@ -2,7 +2,7 @@
 
 ## Functionality
 
-Users can create an account and chat with friends and family in a secure location using the server code generation functionality that is being stored on Firebase.
+Users can create an account and chat with friends and family in a secure location using the server code generation functionality that is stored on Firebase.
 
 # Video Walkthrough
 
@@ -10,7 +10,7 @@ Under development.
 
 ## License
 
-    Copyright [2023] [Joseph Tham]
+    Copyright [2024] [Joseph Tham]
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
