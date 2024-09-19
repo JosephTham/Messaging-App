@@ -4,7 +4,7 @@
 
 Users can create an account and chat with friends and family in a secure location using the server code generation functionality that is stored on Firebase.
 
-# Video Walkthrough
+## Video Walkthrough
 
 Under development.
 
