@@ -6,7 +6,10 @@ Users can create an account and chat with friends and family in a secure locatio
 
 ## Video Walkthrough
 
-Under development.
+![Screen Recording 2024-09-20 at 11 08 58 AM](https://github.com/user-attachments/assets/84631b20-f31f-4d94-96a8-73cdf23e590d)
+
+[Recorded using Quicktime Player]
+[GIF created using Adobe Express]
 
 ## License
 
