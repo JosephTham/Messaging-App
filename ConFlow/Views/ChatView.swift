@@ -6,68 +6,78 @@
 //
 
 import SwiftUI
+import FirebaseAuth
+import FirebaseFirestore
 
 struct ChatView: View {
     @StateObject private var viewModel: ChatViewModel
     @State private var scrollViewProxy: ScrollViewProxy? = nil
+    @State private var user: User? = nil  // State to hold the fetched user
 
-    init(serverCode: String, user: User) {
-        _viewModel = StateObject(wrappedValue: ChatViewModel(serverCode: serverCode, user: user))
+    init(serverCode: String) {
+        _viewModel = StateObject(wrappedValue: ChatViewModel(serverCode: serverCode))
     }
 
     var body: some View {
         VStack {
-            ScrollViewReader { proxy in
-                ScrollView {
-                    LazyVStack {
-                        ForEach(viewModel.messages, id: \.id) { message in
-                            HStack {
-                                VStack(alignment: .leading) {
-                                    Text(message.senderName)
-                                        .font(.caption)
-                                        .foregroundColor(.gray)
-                                    Text("\(message.text)")
-                                        .padding()
-                                        .background(message.senderId == viewModel.user.id ? Color.gray : Color.gray.opacity(0.2))
-                                        .foregroundColor(message.senderId == viewModel.user.id ? .white : .black)
-                                        .cornerRadius(10)
-                                        .padding(.trailing, 50)
-                                        .frame(maxWidth: .infinity, alignment: .leading)
+            if let user = user {
+                // Chat UI only shows if the user is fetched successfully
+                ScrollViewReader { proxy in
+                    ScrollView {
+                        LazyVStack {
+                            ForEach(viewModel.messages, id: \.id) { message in
+                                HStack {
+                                    VStack(alignment: .leading) {
+                                        Text(message.senderName)
+                                            .font(.caption)
+                                            .foregroundColor(.gray)
+                                        Text("\(message.text)")
+                                            .padding()
+                                            .background(message.senderId == user.id ? Color.gray : Color.gray.opacity(0.2))
+                                            .foregroundColor(message.senderId == user.id ? .white : .black)
+                                            .cornerRadius(10)
+                                            .padding(.trailing, 50)
+                                            .frame(maxWidth: .infinity, alignment: .leading)
+                                    }
+                                    Spacer()
                                 }
-                                Spacer()
+                                .padding(.vertical, 4)
+                                .id(message.id)
                             }
-                            .padding(.vertical, 4)
-                            .id(message.id)
                         }
+                    }
+                    .padding()
+                    .onAppear {
+                        scrollViewProxy = proxy
+                    }
+                }
+
+                HStack {
+                    TextField("Enter message", text: $viewModel.newMessage)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .frame(minHeight: 30)
+
+                    Button(action: {
+                        viewModel.sendMessage()
+                        scrollToBottom()
+                    }) {
+                        Text("Send")
+                            .foregroundColor(.white)
+                            .padding(.horizontal)
+                            .padding(.vertical, 10)
+                            .background(Color.blue)
+                            .cornerRadius(10)
                     }
                 }
                 .padding()
-                .onAppear {
-                    scrollViewProxy = proxy
-                }
+            } else {
+                // Loading view while user is being fetched
+                Text("Loading user data...")
             }
-
-            HStack {
-                TextField("Enter message", text: $viewModel.newMessage)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .frame(minHeight: 30)
-
-                Button(action: {
-                    viewModel.sendMessage()
-                    scrollToBottom()
-                }) {
-                    Text("Send")
-                        .foregroundColor(.white)
-                        .padding(.horizontal)
-                        .padding(.vertical, 10)
-                        .background(Color.blue)
-                        .cornerRadius(10)
-                }
-            }
-            .padding()
         }
         .navigationTitle("Chat")
         .onAppear {
+            fetchCurrentUser()
             viewModel.fetchMessages()
         }
     }
@@ -79,8 +89,35 @@ struct ChatView: View {
             }
         }
     }
+
+    // Function to fetch the current user from Firebase Auth & Firestore
+    private func fetchCurrentUser() {
+        guard let currentUser = Auth.auth().currentUser else {
+            print("No authenticated user found.")
+            return
+        }
+
+        let userId = currentUser.uid
+        let db = Firestore.firestore()
+
+        db.collection("users").document(userId).getDocument { (document, error) in
+            if let document = document, document.exists {
+                let data = document.data()
+                self.user = User(
+                    id: document.documentID,
+                    name: data?["name"] as? String ?? "Unknown",
+                    email: data?["email"] as? String ?? "",
+                    joined: data?["joined"] as? TimeInterval ?? 0
+                )
+                // Pass user to ViewModel once it's fetched
+                viewModel.setUser(user: self.user!)
+            } else {
+                print("User does not exist")
+            }
+        }
+    }
 }
 
 #Preview {
-    ChatView(serverCode: "EXAMPLECODE", user: User(id: "1", name: "John Doe", email: "john@example.com", joined: Date().timeIntervalSince1970))
+    ChatView(serverCode: "EXAMPLECODE")
 }

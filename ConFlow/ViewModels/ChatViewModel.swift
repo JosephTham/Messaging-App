@@ -8,6 +8,7 @@
 import Foundation
 import FirebaseFirestore
 import Combine
+import FirebaseAuth
 
 struct Message: Codable, Identifiable {
     let id: String
@@ -21,17 +22,20 @@ class ChatViewModel: ObservableObject {
     @Published var messages: [Message] = []
     @Published var newMessage: String = ""
     let serverCode: String
-    let user: User
+    var user: User?  // Change to optional User, since it's set later
     private var db = Firestore.firestore()
     private var listenerRegistration: ListenerRegistration?
 
-    init(serverCode: String, user: User) {
+    init(serverCode: String) {
         self.serverCode = serverCode
-        self.user = user
     }
 
     deinit {
         listenerRegistration?.remove()
+    }
+
+    func setUser(user: User) {
+        self.user = user
     }
 
     func fetchMessages() {
@@ -52,7 +56,7 @@ class ChatViewModel: ObservableObject {
     }
 
     func sendMessage() {
-        guard !newMessage.isEmpty else { return }
+        guard let user = user, !newMessage.isEmpty else { return }
 
         let message = Message(
             id: UUID().uuidString,
@@ -74,4 +78,3 @@ class ChatViewModel: ObservableObject {
         }
     }
 }
-

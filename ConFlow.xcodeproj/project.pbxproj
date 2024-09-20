@@ -10,6 +10,7 @@
 		012CE29A2C670698006AD475 /* JoinServerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012CE2992C670698006AD475 /* JoinServerViewModel.swift */; };
 		012CE2A22C670A4F006AD475 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012CE2A12C670A4F006AD475 /* ChatView.swift */; };
 		012CE2A42C670A59006AD475 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012CE2A32C670A59006AD475 /* ChatViewModel.swift */; };
+		018CCCF82C824226007157EA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 018CCCF72C824226007157EA /* GoogleService-Info.plist */; };
 		01B8B9312C44C9EE000A2461 /* ConFlowApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B8B9302C44C9EE000A2461 /* ConFlowApp.swift */; };
 		01B8B9332C44C9EE000A2461 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B8B9322C44C9EE000A2461 /* MainView.swift */; };
 		01B8B9352C44C9EF000A2461 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01B8B9342C44C9EF000A2461 /* Assets.xcassets */; };
@@ -17,7 +18,6 @@
 		01B8B9422C44C9F0000A2461 /* ConFlowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B8B9412C44C9F0000A2461 /* ConFlowTests.swift */; };
 		01B8B94C2C44C9F0000A2461 /* ConFlowUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B8B94B2C44C9F0000A2461 /* ConFlowUITests.swift */; };
 		01B8B94E2C44C9F0000A2461 /* ConFlowUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B8B94D2C44C9F0000A2461 /* ConFlowUITestsLaunchTests.swift */; };
-		01B8B95B2C44CA0D000A2461 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 01B8B95A2C44CA0C000A2461 /* GoogleService-Info.plist */; };
 		01B8B95E2C44CE1E000A2461 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 01B8B95D2C44CE1E000A2461 /* FirebaseAnalytics */; };
 		01B8B9602C44CE1E000A2461 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 01B8B95F2C44CE1E000A2461 /* FirebaseAnalyticsSwift */; };
 		01B8B9632C44D012000A2461 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 01B8B9622C44D012000A2461 /* FirebaseAuth */; };
@@ -61,6 +61,7 @@
 		012CE2992C670698006AD475 /* JoinServerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinServerViewModel.swift; sourceTree = "<group>"; };
 		012CE2A12C670A4F006AD475 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		012CE2A32C670A59006AD475 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
+		018CCCF72C824226007157EA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		01B8B92D2C44C9EE000A2461 /* ConFlow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConFlow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01B8B9302C44C9EE000A2461 /* ConFlowApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConFlowApp.swift; sourceTree = "<group>"; };
 		01B8B9322C44C9EE000A2461 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -71,7 +72,6 @@
 		01B8B9472C44C9F0000A2461 /* ConFlowUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConFlowUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		01B8B94B2C44C9F0000A2461 /* ConFlowUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConFlowUITests.swift; sourceTree = "<group>"; };
 		01B8B94D2C44C9F0000A2461 /* ConFlowUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConFlowUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		01B8B95A2C44CA0C000A2461 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		01B8B96C2C44D31C000A2461 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		01B8B96E2C44D33D000A2461 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		01B8B9702C44D349000A2461 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
@@ -147,8 +147,8 @@
 				01B8B9722C44D391000A2461 /* ViewModels */,
 				01B8B96B2C44D2CB000A2461 /* Views */,
 				01B8B9302C44C9EE000A2461 /* ConFlowApp.swift */,
+				018CCCF72C824226007157EA /* GoogleService-Info.plist */,
 				01B8B9342C44C9EF000A2461 /* Assets.xcassets */,
-				01B8B95A2C44CA0C000A2461 /* GoogleService-Info.plist */,
 				01B8B9362C44C9EF000A2461 /* Preview Content */,
 				01B8B9922C451EE3000A2461 /* Extensions.swift */,
 			);
@@ -342,7 +342,7 @@
 			files = (
 				01B8B9382C44C9EF000A2461 /* Preview Assets.xcassets in Resources */,
 				01B8B9352C44C9EF000A2461 /* Assets.xcassets in Resources */,
-				01B8B95B2C44CA0D000A2461 /* GoogleService-Info.plist in Resources */,
+				018CCCF82C824226007157EA /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

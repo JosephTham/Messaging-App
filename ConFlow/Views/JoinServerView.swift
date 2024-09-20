@@ -82,7 +82,8 @@ struct JoinServerView: View {
             }
             .navigationDestination(isPresented: $navigateToChat) {
                 if let server = selectedServer {
-                    ChatView(serverCode: server.code, user: viewModel.user)
+                    ChatView(serverCode: server.code)
+                    // initially user: viewModel.user
                 }
             }
             .onAppear {
