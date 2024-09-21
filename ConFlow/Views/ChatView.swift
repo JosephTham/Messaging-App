@@ -33,8 +33,8 @@ struct ChatView: View {
                                             .foregroundColor(.gray)
                                         Text("\(message.text)")
                                             .padding()
-                                            .background(message.senderId == user.id ? Color.gray : Color.gray.opacity(0.2))
-                                            .foregroundColor(message.senderId == user.id ? .white : .black)
+                                            .background(message.senderId == user.id ? Color.gray : Color.gray)
+                                            .foregroundColor(message.senderId == user.id ? .white : .white) // text color
                                             .cornerRadius(10)
                                             .padding(.trailing, 50)
                                             .frame(maxWidth: .infinity, alignment: .leading)
